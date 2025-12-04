@@ -1,0 +1,209 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Victor\\Documents\\EntrevistaFullStack\\Pacientes.Infrastructure\\Pacientes.Infrastructure.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Victor\\Documents\\EntrevistaFullStack\\Pacientes.Application\\Pacientes.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Victor\\Documents\\EntrevistaFullStack\\Pacientes.Application\\Pacientes.Application.csproj",
+        "projectName": "Pacientes.Application",
+        "projectPath": "C:\\Users\\Victor\\Documents\\EntrevistaFullStack\\Pacientes.Application\\Pacientes.Application.csproj",
+        "packagesPath": "C:\\Users\\Victor\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Victor\\Documents\\EntrevistaFullStack\\Pacientes.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Victor\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\Victor\\Documents\\EntrevistaFullStack\\Pacientes.Domain\\Pacientes.Domain.csproj": {
+                "projectPath": "C:\\Users\\Victor\\Documents\\EntrevistaFullStack\\Pacientes.Domain\\Pacientes.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.3.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.416/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Victor\\Documents\\EntrevistaFullStack\\Pacientes.Domain\\Pacientes.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Victor\\Documents\\EntrevistaFullStack\\Pacientes.Domain\\Pacientes.Domain.csproj",
+        "projectName": "Pacientes.Domain",
+        "projectPath": "C:\\Users\\Victor\\Documents\\EntrevistaFullStack\\Pacientes.Domain\\Pacientes.Domain.csproj",
+        "packagesPath": "C:\\Users\\Victor\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Victor\\Documents\\EntrevistaFullStack\\Pacientes.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Victor\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.416/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Victor\\Documents\\EntrevistaFullStack\\Pacientes.Infrastructure\\Pacientes.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Victor\\Documents\\EntrevistaFullStack\\Pacientes.Infrastructure\\Pacientes.Infrastructure.csproj",
+        "projectName": "Pacientes.Infrastructure",
+        "projectPath": "C:\\Users\\Victor\\Documents\\EntrevistaFullStack\\Pacientes.Infrastructure\\Pacientes.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\Victor\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Victor\\Documents\\EntrevistaFullStack\\Pacientes.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Victor\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\Victor\\Documents\\EntrevistaFullStack\\Pacientes.Application\\Pacientes.Application.csproj": {
+                "projectPath": "C:\\Users\\Victor\\Documents\\EntrevistaFullStack\\Pacientes.Application\\Pacientes.Application.csproj"
+              },
+              "C:\\Users\\Victor\\Documents\\EntrevistaFullStack\\Pacientes.Domain\\Pacientes.Domain.csproj": {
+                "projectPath": "C:\\Users\\Victor\\Documents\\EntrevistaFullStack\\Pacientes.Domain\\Pacientes.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.416/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+C:\Users\Victor\Documents\EntrevistaFullStack\Pacientes.Application\obj\Debug\net8.0\Pacientes.Application.csproj.AssemblyReference.cache
+C:\Users\Victor\Documents\EntrevistaFullStack\Pacientes.Application\obj\Debug\net8.0\Pacientes.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Victor\Documents\EntrevistaFullStack\Pacientes.Application\obj\Debug\net8.0\Pacientes.Application.AssemblyInfoInputs.cache
+C:\Users\Victor\Documents\EntrevistaFullStack\Pacientes.Application\obj\Debug\net8.0\Pacientes.Application.AssemblyInfo.cs
+C:\Users\Victor\Documents\EntrevistaFullStack\Pacientes.Application\obj\Debug\net8.0\Pacientes.Application.csproj.CoreCompileInputs.cache
+C:\Users\Victor\Documents\EntrevistaFullStack\Pacientes.Application\bin\Debug\net8.0\Pacientes.Application.deps.json
+C:\Users\Victor\Documents\EntrevistaFullStack\Pacientes.Application\bin\Debug\net8.0\Pacientes.Application.dll
+C:\Users\Victor\Documents\EntrevistaFullStack\Pacientes.Application\bin\Debug\net8.0\Pacientes.Application.pdb
+C:\Users\Victor\Documents\EntrevistaFullStack\Pacientes.Application\bin\Debug\net8.0\Pacientes.Domain.dll
+C:\Users\Victor\Documents\EntrevistaFullStack\Pacientes.Application\bin\Debug\net8.0\Pacientes.Domain.pdb
+C:\Users\Victor\Documents\EntrevistaFullStack\Pacientes.Application\obj\Debug\net8.0\Paciente.A5518B33.Up2Date
+C:\Users\Victor\Documents\EntrevistaFullStack\Pacientes.Application\obj\Debug\net8.0\Pacientes.Application.dll
+C:\Users\Victor\Documents\EntrevistaFullStack\Pacientes.Application\obj\Debug\net8.0\refint\Pacientes.Application.dll
+C:\Users\Victor\Documents\EntrevistaFullStack\Pacientes.Application\obj\Debug\net8.0\Pacientes.Application.pdb
+C:\Users\Victor\Documents\EntrevistaFullStack\Pacientes.Application\obj\Debug\net8.0\ref\Pacientes.Application.dll

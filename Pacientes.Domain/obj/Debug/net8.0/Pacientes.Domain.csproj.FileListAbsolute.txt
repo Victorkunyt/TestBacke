@@ -1,0 +1,11 @@
+C:\Users\Victor\Documents\EntrevistaFullStack\Pacientes.Domain\bin\Debug\net8.0\Pacientes.Domain.deps.json
+C:\Users\Victor\Documents\EntrevistaFullStack\Pacientes.Domain\bin\Debug\net8.0\Pacientes.Domain.dll
+C:\Users\Victor\Documents\EntrevistaFullStack\Pacientes.Domain\bin\Debug\net8.0\Pacientes.Domain.pdb
+C:\Users\Victor\Documents\EntrevistaFullStack\Pacientes.Domain\obj\Debug\net8.0\Pacientes.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Victor\Documents\EntrevistaFullStack\Pacientes.Domain\obj\Debug\net8.0\Pacientes.Domain.AssemblyInfoInputs.cache
+C:\Users\Victor\Documents\EntrevistaFullStack\Pacientes.Domain\obj\Debug\net8.0\Pacientes.Domain.AssemblyInfo.cs
+C:\Users\Victor\Documents\EntrevistaFullStack\Pacientes.Domain\obj\Debug\net8.0\Pacientes.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Victor\Documents\EntrevistaFullStack\Pacientes.Domain\obj\Debug\net8.0\Pacientes.Domain.dll
+C:\Users\Victor\Documents\EntrevistaFullStack\Pacientes.Domain\obj\Debug\net8.0\refint\Pacientes.Domain.dll
+C:\Users\Victor\Documents\EntrevistaFullStack\Pacientes.Domain\obj\Debug\net8.0\Pacientes.Domain.pdb
+C:\Users\Victor\Documents\EntrevistaFullStack\Pacientes.Domain\obj\Debug\net8.0\ref\Pacientes.Domain.dll
