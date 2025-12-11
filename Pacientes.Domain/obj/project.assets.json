@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Victor\\Documents\\EntrevistaFullStack\\Pacientes.Domain\\Pacientes.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\Victor\\Documents\\C#\\Pacientes.Domain\\Pacientes.Domain.csproj",
       "projectName": "Pacientes.Domain",
-      "projectPath": "C:\\Users\\Victor\\Documents\\EntrevistaFullStack\\Pacientes.Domain\\Pacientes.Domain.csproj",
+      "projectPath": "C:\\Users\\Victor\\Documents\\C#\\Pacientes.Domain\\Pacientes.Domain.csproj",
       "packagesPath": "C:\\Users\\Victor\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Victor\\Documents\\EntrevistaFullStack\\Pacientes.Domain\\obj\\",
+      "outputPath": "C:\\Users\\Victor\\Documents\\C#\\Pacientes.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Victor\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -9,6 +9,7 @@ public interface IPatientService
     Task<PatientResponseDto> CreateAsync(PatientCreateDto dto, CancellationToken cancellationToken = default);
     Task<PatientResponseDto?> UpdateAsync(Guid id, PatientUpdateDto dto, CancellationToken cancellationToken = default);
     Task<bool> DeleteAsync(Guid id, CancellationToken cancellationToken = default);
+    Task<bool> DeleteAllAsync(CancellationToken cancellationToken = default);
 }
 
 

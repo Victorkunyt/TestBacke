@@ -4,16 +4,19 @@ Este projeto implementa uma API REST de pacientes usando .NET 8, seguindo uma va
 
 - **Pacientes.Domain**: Entidades de domínio (`Patient`).
 - **Pacientes.Application**: DTOs, interfaces (`IPatientRepository`, `IPatientService`), serviços de aplicação e validações (FluentValidation).
-- **Pacientes.Infrastructure**: Infraestrutura de dados com Entity Framework Core (InMemory) e repositórios concretos.
+- **Pacientes.Infrastructure**: Infraestrutura de dados com Entity Framework Core (MySQL) e repositórios concretos.
 - **Pacientes.Api**: Projeto Web API (controllers, DI, pipeline HTTP).
 
 ---
 
 ### 1. Pré-requisitos
 
-- **.NET 8 SDK** instalado  
+- **.NET 8 SDK** instalado
   - Site oficial: `https://dotnet.microsoft.com/download`
-- **Docker** (opcional, para rodar via container)  
+- **MySQL** instalado e rodando (versão 8.0 ou superior)
+  - Site oficial: `https://dev.mysql.com/downloads/mysql/`
+  - Ou use Docker: `docker run --name mysql-pacientes -e MYSQL_ROOT_PASSWORD=senha123 -e MYSQL_DATABASE=PacientesDb -p 3306:3306 -d mysql:8.0`
+- **Docker** (opcional, para rodar via container)
   - Site oficial: `https://www.docker.com/`
 
 ---
@@ -46,21 +49,45 @@ Este projeto implementa uma API REST de pacientes usando .NET 8, seguindo uma va
 ### 3. Passo a passo para rodar localmente (sem Docker)
 
 1. **Clonar o repositório** (ou usar os arquivos gerados pelo Cursor):
-   - Coloque todos os arquivos nas pastas conforme a estrutura acima.
 
-2. **Restaurar pacotes**:
+   - Coloque todos os arquivos nas pastas conforme a estrutura acima.
+2. **Configurar a connection string do MySQL**:
+
+   - Edite o arquivo `Pacientes.Api/appsettings.json` ou `appsettings.Development.json`
+   - Ajuste a connection string conforme seu ambiente MySQL:
+     ```json
+     "ConnectionStrings": {
+       "DefaultConnection": "Server=localhost;Database=PacientesDb;User=root;Password=sua_senha;Port=3306;"
+     }
+     ```
+
+3. **Instalar ferramentas do Entity Framework** (se ainda não tiver):
+
+   ```bash
+   dotnet tool install --global dotnet-ef
+   ```
+
+4. **Criar o banco de dados e aplicar migrations**:
+
+   ```bash
+   cd Pacientes.Api
+   dotnet ef migrations add InitialCreate --project ../Pacientes.Infrastructure/Pacientes.Infrastructure.csproj
+   dotnet ef database update --project ../Pacientes.Infrastructure/Pacientes.Infrastructure.csproj
+   ```
+
+5. **Restaurar pacotes**:
 
    ```bash
    dotnet restore Pacientes.Api/Pacientes.Api.csproj
    ```
 
-3. **Rodar a API**:
+6. **Rodar a API**:
 
    ```bash
    dotnet run --project Pacientes.Api/Pacientes.Api.csproj
    ```
-
 4. **Acessar Swagger** (em ambiente de desenvolvimento):
+
    - URL padrão: `https://localhost:5001/swagger` ou `http://localhost:5000/swagger`
 
 ---
@@ -70,10 +97,13 @@ Este projeto implementa uma API REST de pacientes usando .NET 8, seguindo uma va
 Controller: `PatientsController` (`/api/patients`)
 
 - **GET** `/api/patients`
+
   - Retorna lista de pacientes.
 - **GET** `/api/patients/{id}`
+
   - Retorna um paciente por `id` (`Guid`).
 - **POST** `/api/patients`
+
   - Cria um novo paciente.
   - Body (JSON):
 
@@ -85,10 +115,11 @@ Controller: `PatientsController` (`/api/patients`)
       "document": "12345678900"
     }
     ```
-
 - **PUT** `/api/patients/{id}`
+
   - Atualiza um paciente existente.
 - **DELETE** `/api/patients/{id}`
+
   - Remove um paciente.
 
 ---
@@ -116,27 +147,31 @@ Quando uma validação falhar, a API retorna **400 Bad Request** com os detalhes
 A configuração de DI e da pipeline HTTP está em `Program.cs` do projeto `Pacientes.Api`:
 
 - **Controllers / API**:
+
   - Registrados com:
 
     ```csharp
     builder.Services.AddControllers();
     ```
-
 - **DbContext**:
-  - `ApplicationDbContext` com banco InMemory:
+
+  - `ApplicationDbContext` com MySQL:
 
     ```csharp
+    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
     builder.Services.AddDbContext<ApplicationDbContext>(options =>
     {
-        options.UseInMemoryDatabase("PacientesDb");
+        options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 21)));
     });
     ```
-
 - **Repositório**:
+
   - `IPatientRepository` → `PatientRepository`.
 - **Serviço de aplicação**:
+
   - `IPatientService` → `PatientService`.
 - **FluentValidation**:
+
   - Registrado com:
 
     ```csharp
@@ -155,18 +190,16 @@ A configuração de DI e da pipeline HTTP está em `Program.cs` do projeto `Paci
    ```bash
    docker build -t pacientes-api .
    ```
-
 2. **Rodar o container**:
 
    ```bash
    docker run -d -p 8080:80 --name pacientes-api-container pacientes-api
    ```
-
 3. **Acessar a API no navegador ou via Postman**:
+
    - Base URL: `http://localhost:8080`
    - Swagger (se habilitado em produção, por padrão está só em Development):
      - `http://localhost:8080/swagger`
-
 4. **Parar e remover o container** (opcional):
 
    ```bash
@@ -180,9 +213,6 @@ A configuração de DI e da pipeline HTTP está em `Program.cs` do projeto `Paci
 
 Sugestões de próximos passos:
 
-- **Substituir InMemory por banco real** (SQL Server, PostgreSQL, etc.) criando migrations na camada `Infrastructure`.
 - Implementar **padrão CQRS** com comandos/queries separados.
 - Adicionar **logs** e **tratamento global de erros** (middleware).
 - Criar testes unitários para serviços de aplicação e validações.
-
-

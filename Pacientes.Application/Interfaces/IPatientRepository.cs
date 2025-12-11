@@ -10,6 +10,7 @@ public interface IPatientRepository
     Task UpdateAsync(Patient patient, CancellationToken cancellationToken = default);
     Task DeleteAsync(Patient patient, CancellationToken cancellationToken = default);
     Task<bool> ExistsByIdAsync(Guid id, CancellationToken cancellationToken = default);
+    Task DeleteAllAsync(CancellationToken cancellationToken);
 }
 
 
