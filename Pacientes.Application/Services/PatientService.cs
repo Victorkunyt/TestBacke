@@ -82,8 +82,11 @@ public class PatientService : IPatientService
             Document = dto.Document
             // Id e CreatedAt são definidos automaticamente na entidade
         };
-
-        // Persiste no banco através do repositório
+        if (await _repository.ExistsByEmailAsync(patient.Email, cancellationToken))
+        {
+            throw new Exception("Email already exists");
+        }
+        // Persiste no banco através do repositório  
         await _repository.AddAsync(patient, cancellationToken);
 
         // Retorna DTO de resposta (não expõe a entidade diretamente)
@@ -135,7 +138,17 @@ public class PatientService : IPatientService
 
     public async Task<bool> DeleteAllAsync(CancellationToken cancellationToken = default)
     {
-        await _repository.DeleteAllAsync(cancellationToken);
+
+        var patients = await _repository.GetAllAsync(cancellationToken);
+        if (patients.Count == 0)
+        {
+            return false;  // Nenhum paciente encontrado
+        }
+
+        foreach (var patient in patients)
+        {
+            await _repository.DeleteAsync(patient, cancellationToken);  
+        }
         return true;
     }
 }

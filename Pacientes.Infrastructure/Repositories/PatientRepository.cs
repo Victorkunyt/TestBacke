@@ -113,6 +113,11 @@ public class PatientRepository : IPatientRepository
         return await _context.Patients.AnyAsync(x => x.Id == id, cancellationToken);
     }
 
+    public async Task<bool> ExistsByEmailAsync(string email, CancellationToken cancellationToken = default)
+    {
+        return await _context.Patients.AnyAsync(x => x.Email == email, cancellationToken);
+    }
+
     public async Task DeleteAllAsync(CancellationToken cancellationToken)
     {
         await _context.Patients.ExecuteDeleteAsync(cancellationToken);

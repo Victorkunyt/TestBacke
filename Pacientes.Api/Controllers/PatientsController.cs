@@ -80,9 +80,16 @@ public class PatientsController : ControllerBase
         if (!ModelState.IsValid)
             return ValidationProblem(ModelState);  // HTTP 400 Bad Request com erros
 
+        try
+        {
         var created = await _patientService.CreateAsync(dto, cancellationToken);
-        // HTTP 201 Created com Location header apontando para o recurso criado
-        return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
+        return Ok(created);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { error = ex.Message });
+        }
+      
     }
 
     // PUT /api/patients/{id}
