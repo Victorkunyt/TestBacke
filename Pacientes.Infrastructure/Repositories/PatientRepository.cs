@@ -122,6 +122,31 @@ public class PatientRepository : IPatientRepository
     {
         await _context.Patients.ExecuteDeleteAsync(cancellationToken);
     }
+
+    /// <summary>
+    /// Verifica se existe outro paciente (diferente do ID fornecido) com o email especificado.
+    /// Usado na atualização para garantir que o email não está sendo usado por outro paciente.
+    /// Retorna true se existe outro paciente com esse email, false caso contrário.
+    /// 
+    /// Exemplo de uso:
+    /// - Paciente A (ID: abc-123, Email: "email1@test.com")
+    /// - Paciente B (ID: def-456, Email: "email2@test.com")
+    /// - Tentando atualizar Paciente A com email "email2@test.com"
+    /// - Este método retorna TRUE (existe outro paciente com esse email)
+    /// </summary>
+    public async Task<bool> EExistingemailotherthanmine(string email, Guid id, CancellationToken cancellationToken = default)
+    {
+        if (string.IsNullOrWhiteSpace(email))
+            return false;
+            
+        // Normaliza o email: remove espaços em branco antes e depois
+        var normalizedEmail = email.Trim();
+        
+        // Query SQL gerada: SELECT 1 FROM Patients WHERE Email = @email AND Id != @id LIMIT 1
+        // Verifica se existe algum paciente com esse email E que tenha ID diferente do fornecido
+        var exists = await _context.Patients
+            .AnyAsync(x => x.Email == normalizedEmail && x.Id != id, cancellationToken);
+            
+        return exists;
+    }
 }
-
-

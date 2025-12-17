@@ -12,6 +12,7 @@ public interface IPatientRepository
     Task<bool> ExistsByIdAsync(Guid id, CancellationToken cancellationToken = default);
     Task DeleteAllAsync(CancellationToken cancellationToken);
     Task<bool> ExistsByEmailAsync(string email, CancellationToken cancellationToken = default);
+    Task<bool> EExistingemailotherthanmine(string email, Guid id, CancellationToken cancellationToken = default);
         }
 
 

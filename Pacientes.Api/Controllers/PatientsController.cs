@@ -100,11 +100,17 @@ public class PatientsController : ControllerBase
         if (!ModelState.IsValid)
             return ValidationProblem(ModelState);  // HTTP 400 Bad Request
 
-        var updated = await _patientService.UpdateAsync(id, dto, cancellationToken);
-        if (updated is null)
-            return NotFound();  // HTTP 404 Not Found
-
-        return Ok(updated);  // HTTP 200 OK com paciente atualizado
+            try
+            {
+                var updated = await _patientService.UpdateAsync(id, dto, cancellationToken);
+                if (updated is null)
+                return NotFound();  // HTTP 404 Not Found
+                return Ok(updated);  // HTTP 200 OK com paciente atualizado  
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { error = ex.Message });  // HTTP 400 Bad Request com erro
+            }
     }
 
     // DELETE /api/patients/{id}

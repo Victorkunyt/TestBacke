@@ -101,14 +101,25 @@ public class PatientService : IPatientService
     {
         // Busca o paciente existente
         var patient = await _repository.GetByIdAsync(id, cancellationToken);
+
         if (patient is null)
         {
             return null;  // Paciente não encontrado
         }
 
+        // Normaliza o email do DTO (remove espaços em branco)
+        var newEmail = dto.Email?.Trim() ?? string.Empty;
+        
+        // Valida se o novo email já está sendo usado por outro paciente
+        // Esta validação impede que um paciente atualize seu email para um email que já pertence a outro paciente
+        if (await _repository.EExistingemailotherthanmine(newEmail, id, cancellationToken))
+        {
+            throw new Exception($"Email '{newEmail}' is already being used by another patien");
+        }  
+
         // Atualiza propriedades (lógica de negócio)
         patient.Name = dto.Name;
-        patient.Email = dto.Email;
+        patient.Email = newEmail;
         patient.DateOfBirth = dto.DateOfBirth;
         patient.Document = dto.Document;
         patient.UpdatedAt = DateTime.UtcNow;  // Timestamp de atualização
