@@ -1,0 +1,66 @@
+# ============================================================================
+# .DOCKERIGNORE - Arquivos ignorados no build Docker
+# ============================================================================
+# 
+# Otimiza o build do Docker ignorando arquivos desnecessários
+# Reduz tamanho do contexto e acelera o build
+
+# Build outputs
+**/bin/
+**/obj/
+**/out/
+
+# Visual Studio / Rider
+**/.vs/
+**/.idea/
+**/*.user
+**/*.suo
+**/*.sln.docstates
+
+# Testes
+**/TestResults/
+**/*.trx
+**/*.coverage
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Documentação
+*.md
+!README.md
+
+# Docker
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+azure-pipelines.yml
+
+# Logs
+*.log
+**/logs/
+
+# Temporários
+**/.tmp/
+**/.temp/
+**/tmp/
+**/temp/
+
+# OS
+.DS_Store
+Thumbs.db
+**/.vscode/
+
+# NuGet
+**/packages/
+*.nupkg
+
+# Node (se houver)
+node_modules/
+npm-debug.log
+

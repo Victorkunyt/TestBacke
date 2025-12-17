@@ -21,8 +21,10 @@
 # ============================================================================
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
-EXPOSE 80   # Porta HTTP
-EXPOSE 443  # Porta HTTPS
+# Porta HTTP
+EXPOSE 80
+# Porta HTTPS
+EXPOSE 443
 
 # ============================================================================
 # STAGE 2: Build Stage (contém SDK para compilar)

@@ -57,10 +57,26 @@ builder.Services.AddSwaggerGen();
 // - PostgreSQL: UseNpgsql(connectionString)
 // - MySQL: UseMySql(connectionString) ← Atual
 
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+// ============================================================================
+// CONFIGURAÇÃO DE CONNECTION STRING
+// ============================================================================
+// 
+// Prioridade:
+// 1. Variável de ambiente CONNECTION_STRING (usado em cloud)
+// 2. appsettings.json → ConnectionStrings:DefaultConnection (desenvolvimento local)
+//
+// Isso permite flexibilidade: usar appsettings.json localmente e variáveis
+// de ambiente em produção (mais seguro, não commita secrets no Git).
+
+var connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING") 
+    ?? builder.Configuration.GetConnectionString("DefaultConnection");
+
 if (string.IsNullOrEmpty(connectionString))
 {
-    throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+    throw new InvalidOperationException(
+        "Connection string not found. Configure either:" +
+        "\n1. Environment variable: CONNECTION_STRING" +
+        "\n2. appsettings.json: ConnectionStrings:DefaultConnection");
 }
 
 // Criar o banco de dados automaticamente se não existir
@@ -142,8 +158,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();    // Interface web para testar a API
 }
 
-// Redireciona HTTP para HTTPS (segurança)
-app.UseHttpsRedirection();
+// Redireciona HTTP para HTTPS apenas em desenvolvimento
+// Em produção (cloud), o HTTPS é gerenciado pelo load balancer/proxy
+if (app.Environment.IsDevelopment())
+{
+    app.UseHttpsRedirection();
+}
 
 // Autenticação e autorização (se configurado)
 app.UseAuthorization();
@@ -151,6 +171,15 @@ app.UseAuthorization();
 // Mapeia os controllers para rotas HTTP
 // Exemplo: PatientsController → /api/patients
 app.MapControllers();
+
+// ============================================================================
+// CONFIGURAÇÃO DE PORTA PARA CLOUD
+// ============================================================================
+// 
+// Plataformas cloud (Railway, Render, Azure, etc.) definem a porta via
+// variável de ambiente PORT. Se não existir, usa a porta padrão.
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
+app.Urls.Add($"http://0.0.0.0:{port}");
 
 // Inicia o servidor HTTP e fica escutando requisições
 app.Run();
